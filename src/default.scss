@@ -21,14 +21,27 @@ body{
     height: 100%;
     width: 550px;
     border: solid outset 1px $gris;
+    overflow: hidden;
+}
+
+#app{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+
 }
 
 .loading-screen{
+    margin-left: 0;
     display: flex;
     width: 550px;
     height: 100%;
     background-image: url("./assets/images/cloud.jpg");
     background-size: cover;
+    flex-grow: 0;
+    flex-shrink: 0;
+    transition: all 1s;
 }
 
 .loading-component{
@@ -61,4 +74,15 @@ body{
             font-weight: 100;
         }
     }
+}
+
+.home-screen{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    background: linear-gradient(0.09deg, #7696C7 -51.63%, #325180 99.93%);
+    margin-left: 0;
+    transition: all 1s;
 }
