@@ -1,0 +1,9 @@
+<div class="phone">
+    <div class="loading-screen">
+        <div class="logo"></div>
+        <p class="title">RainAlert</p>
+    </div>
+    <nav class="navbar-top"></nav>
+    <div class="main"></div>
+    <nav class="navbar-bot"></nav>
+</div>
