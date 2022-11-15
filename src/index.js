@@ -1,14 +1,18 @@
 import "./default.scss"
 import Loading from "./component/loading"
-import Home from "./component/home"
+import Main from "./component/main"
+import Header from "./component/header"
+import Footer from "./component/footer"
 const app = document.getElementById('app');
 let content = "";
 content += Loading();
-content += Home();
+content += Header();
+content += Main();
+content += Footer();
 app.innerHTML = content;
 const loadingScreen = document.querySelector('.loading-screen');
-let waitingLoading = window.setTimeout(loadingAnimation, 1500);
+window.setTimeout(loadingAnimation, 1500);
 
 function loadingAnimation(){
-    loadingScreen.style.marginLeft = '-100%';
+    loadingScreen.style.marginLeft = '-550px';
 }

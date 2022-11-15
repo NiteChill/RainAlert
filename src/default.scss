@@ -17,11 +17,12 @@ body{
 }
 
 .phone{
+    position: relative;
     display: flex;
     height: 100%;
     width: 550px;
     border: solid outset 1px $gris;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 #app{
@@ -29,18 +30,19 @@ body{
     flex-direction: row;
     width: 100%;
     height: 100%;
-
+    background: linear-gradient(0.09deg, #7696C7 -51.63%, #325180 99.93%);
 }
 
 .loading-screen{
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
     margin-left: 0;
     display: flex;
     width: 550px;
     height: 100%;
     background-image: url("./assets/images/cloud.jpg");
     background-size: cover;
-    flex-grow: 0;
-    flex-shrink: 0;
     transition: all 1s;
 }
 
@@ -52,37 +54,76 @@ body{
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
-    & .logo{
-        display: flex;
-        background: url("./assets/images/Logo.png");
-        width: 115px;
-        height: 115px;
-        background-size: cover;
+}
+
+.logo{
+    display: flex;
+    background: url("./assets/images/Logo.png");
+    width: 115px;
+    height: 115px;
+    background-size: cover;
+}
+.RainAlert-text{
+    display: flex;
+    flex-direction: column;
+    color: $blanc;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 1.5rem;
+    &-1{
+        font-size: 2.5rem;
     }
-    & .loading-text{
-        display: flex;
-        flex-direction: column;
-        color: $blanc;
-        font-family: 'Roboto', sans-serif;
-        margin-left: 1.5rem;
-        &-1{
-            font-size: 2.5rem;
-        }
-        &-2{
-            color: $gris-clair;
-            margin-left: 2px;
-            font-weight: 100;
-        }
+    &-2{
+        color: $gris-clair;
+        margin-left: 2px;
+        font-weight: 100;
     }
+}
+
+.small{
+    width: 80px;
+    height: 80px;
+}
+
+.margin-left--20{
+    margin-left: 5px;
 }
 
 .home-screen{
     display: flex;
     width: 100%;
     height: 100%;
-    flex-grow: 1;
-    flex-shrink: 0;
-    background: linear-gradient(0.09deg, #7696C7 -51.63%, #325180 99.93%);
     margin-left: 0;
     transition: all 1s;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.body{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.header{
+    margin-top: 2.5%;
+    display: flex;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer{
+    display: flex;
+    width: 100%;
+    height: 13%;
+    align-items: center;
+    justify-content: center;
 }
