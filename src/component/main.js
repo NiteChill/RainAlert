@@ -8,7 +8,7 @@ const Main = () => {
             <input
             type="text"
             class="research"
-            placeholder="Rechercher" />
+            placeholder="Rechercher"/>
         </div>
     </div>
     `

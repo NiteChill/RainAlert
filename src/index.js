@@ -1,3 +1,4 @@
+const fa = require("fontawesome");
 import "./default.scss"
 import Loading from "./component/loading"
 import Main from "./component/main"
