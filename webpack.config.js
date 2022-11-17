@@ -4,6 +4,9 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
+  experiments: {
+    topLevelAwait: true
+  },
   entry: {
     main : path.join(__dirname, "./src/index.js")
   },
