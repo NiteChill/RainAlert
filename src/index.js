@@ -78,16 +78,9 @@ input.addEventListener('input', () => {
 });
 document.addEventListener('keypress', (e) => {
     if(e.key === "Enter" && isWritting && e.target.value !== ""){
-        console.log(input.value);
-
         fetch(`https://api.meteo-concept.com/api/location/cities?token=${token}&search=${e.target.value}`)
         .then(res => res.json())
         .then(json => console.log(json));
-
-
-
-
-
         isWritting = false;
     }
 })
