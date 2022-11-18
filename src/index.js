@@ -1,10 +1,18 @@
 import "./default.scss"
 
+//api import
+const token = "d8fbec2589f959ebd35f1a09990a8aee90f928c4d7d8fa7244e935626bf9b133";
+//https://api.meteo-concept.com/api/location/cities?token=${token}&search=Renne
+// curl -X 'GET' \
+//   'https://api.meteo-concept.com/api/location/cities?token=${token}&search=${input.value}' \
+//   -H 'accept: application/json'
+
 //html import
 import Loading from "./component/loading"
 import Main from "./component/main"
 import Header from "./component/header"
 import Footer from "./component/footer"
+import { researchgate } from "fontawesome";
 
 //get app
 const app = document.getElementById('app');
@@ -28,7 +36,8 @@ const weather = document.querySelector('.weather');
 const mapScreen = document.querySelector('.map-screen');
 const indicatorLine = document.querySelector('.indicator-line');
 let mapOrWeather = true;
-let timer;
+let timerMap;
+let timerWeather;
 function removeWiggleMap(){map.classList.remove("wiggle")};
 function removeWiggleWeather(){weather.classList.remove("wiggle")};
 map.addEventListener('click', () => {
@@ -42,13 +51,13 @@ map.addEventListener('click', () => {
     }
     else{
         map.classList.add("wiggle");
-        timer = window.setTimeout(removeWiggleMap, 820);
+        timerMap = window.setTimeout(removeWiggleMap, 820);
     }
 });
 weather.addEventListener('click', () => {
     if (mapOrWeather){
         weather.classList.add("wiggle");
-        timer = window.setTimeout(removeWiggleWeather, 820);
+        timerWeather = window.setTimeout(removeWiggleWeather, 820);
     }
     else{
         mapScreen.style.marginLeft = '-100%';
@@ -59,3 +68,26 @@ weather.addEventListener('click', () => {
         mapOrWeather = true;
     }
 });
+
+//input and results
+const input = document.querySelector('.research');
+const results = document.querySelector('.results');
+let isWritting = false;
+input.addEventListener('input', () => {
+    isWritting = true;
+});
+document.addEventListener('keypress', (e) => {
+    if(e.key === "Enter" && isWritting && e.target.value !== ""){
+        console.log(input.value);
+
+        fetch(`https://api.meteo-concept.com/api/location/cities?token=${token}&search=${e.target.value}`)
+        .then(res => res.json())
+        .then(json => console.log(json));
+
+
+
+
+
+        isWritting = false;
+    }
+})

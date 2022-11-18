@@ -9,6 +9,7 @@ const Main = () => {
             type="text"
             class="research"
             placeholder="Rechercher"/>
+            <div class="results"></div>
         </div>
     </div>
     `
