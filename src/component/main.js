@@ -9,7 +9,13 @@ const Main = () => {
             type="text"
             class="research"
             placeholder="Rechercher"/>
-            <div class="results"></div>
+            <div class="results">
+                <div class="name"></div>
+                <div class="button">
+                    <div class="cancel">Annuler</div>
+                    <div class="search">Rechercher</div>
+                </div>
+            </div>
         </div>
     </div>
     `

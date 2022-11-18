@@ -12,7 +12,7 @@ import Loading from "./component/loading"
 import Main from "./component/main"
 import Header from "./component/header"
 import Footer from "./component/footer"
-import { researchgate } from "fontawesome";
+import { ellipsisHAlt, researchgate } from "fontawesome";
 
 //get app
 const app = document.getElementById('app');
@@ -72,15 +72,61 @@ weather.addEventListener('click', () => {
 //input and results
 const input = document.querySelector('.research');
 const results = document.querySelector('.results');
-let isWritting = false;
-input.addEventListener('input', () => {
-    isWritting = true;
+const cancel = document.querySelector('.cancel');
+const search = document.querySelector('.search');
+const button = document.querySelector('.button');
+const name = document.querySelector('.name');
+function apiSearch() {
+    name.innerHTML= "";
+    fetch(`https://api.meteo-concept.com/api/location/cities?token=${token}&search=${input.value}`)
+    .then(res => res.json())
+    //.then(json => console.log(json))
+    .then(json => nameBuild(json));
+}
+function nameBuild(json){
+    json.cities.forEach( item => {
+        const city = document.createElement('div');
+        city.classList.add('city');
+        city.textContent = item.name;
+        const line = document.createElement('div');
+        line.classList.add('line');
+        name.append(city, line);
+    });
+}
+function displayResearch() {results.style.display= 'flex'}
+input.addEventListener('click', () => {
+    input.style.background= 'white';
+    input.style.color='#000';
+    input.style.borderRadius= '8px 8px 0 0';
+    input.style.backgroundImage= 'url("./assets/images/black-glass.png")';
+    input.style.backgroundRepeat= 'no-repeat';
+    input.style.backgroundSize= '60px';
+    input.style.backgroundPosition= '400px 11px';
+    button.style.display= 'flex';
+    results.style.height= '80%';
+});
+cancel.addEventListener('click', ()=> {
+    input.style.background= 'rgba(255, 255, 255, 0.28)';
+    input.style.color='white';
+    input.style.borderRadius= '8px';
+    input.style.backgroundImage= 'url("./assets/images/glass.png")';
+    input.style.backgroundRepeat= 'no-repeat';
+    input.style.backgroundSize= '60px';
+    input.style.backgroundPosition= '400px 11px';
+    button.style.display= 'none';
+    results.style.display= 'none';
+    results.style.height= '0';
+    input.value = "";
+    let timerHeight = window.setTimeout(displayResearch, 500);
+    name.innerHTML= ""
 });
 document.addEventListener('keypress', (e) => {
-    if(e.key === "Enter" && isWritting && e.target.value !== ""){
-        fetch(`https://api.meteo-concept.com/api/location/cities?token=${token}&search=${e.target.value}`)
-        .then(res => res.json())
-        .then(json => console.log(json));
-        isWritting = false;
+    if(e.key === "Enter" && e.target.value !== ""){
+        apiSearch();
+    }
+})
+search.addEventListener('click', () => {
+    if(input.value !== ""){
+        apiSearch();
     }
 })
