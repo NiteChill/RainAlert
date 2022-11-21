@@ -106,6 +106,7 @@ body{
         background-size: 60px;
         background-position: 400px 11px;
         padding-right: 90px;
+        z-index: 3;
         &::placeholder {
             color: $blanc;
             opacity: .5;
@@ -121,14 +122,16 @@ body{
         }
     }
     & .results{
+        position: absolute;
         display: flex;
+        z-index: 2;
         width: 87%;
         height: 0;
         font-family: 'Roboto', sans-serif;
         font-size: 3rem;
         font-weight: 300;
         background: $blanc;
-        border-radius: 0 0 8px 8px;
+        border-radius: 8px;
         color: $blanc;
         transition: height .5s;
         flex-direction: column;
@@ -142,6 +145,7 @@ body{
             flex-direction: column;
             overflow-y: scroll;
             max-height: 550px;
+            cursor: pointer;
             &::-webkit-scrollbar-thumb {
                 background: $gris-clair;
                 border-radius: 20px;
@@ -218,6 +222,7 @@ body{
 
 //footer
 .footer{
+    z-index: 4;
     display: flex;
     width: 100%;
     height: 13%;

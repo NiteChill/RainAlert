@@ -1,18 +1,14 @@
 import "./default.scss"
+import { ellipsisHAlt, researchgate } from "fontawesome";
 
 //api import
 const token = "d8fbec2589f959ebd35f1a09990a8aee90f928c4d7d8fa7244e935626bf9b133";
-//https://api.meteo-concept.com/api/location/cities?token=${token}&search=Renne
-// curl -X 'GET' \
-//   'https://api.meteo-concept.com/api/location/cities?token=${token}&search=${input.value}' \
-//   -H 'accept: application/json'
 
 //html import
 import Loading from "./component/loading"
 import Main from "./component/main"
 import Header from "./component/header"
 import Footer from "./component/footer"
-import { ellipsisHAlt, researchgate } from "fontawesome";
 
 //get app
 const app = document.getElementById('app');
@@ -83,11 +79,30 @@ function apiSearch() {
     //.then(json => console.log(json))
     .then(json => nameBuild(json));
 }
+let arrayHourly;
+function arrayHourlyBuild( h1, t1, h2, t2, h3, t3, h4, t4, h5, t5 ){
+    arrayHourly = [
+        { hour: h1, pluie: t1 },
+        { hour: h2, pluie: t2 },
+        { hour: h3, pluie: t3 },
+        { hour: h4, pluie: t4 },
+        { hour: h5, pluie: t5 },
+    ]
+    console.log(arrayHourly);
+}
 function nameBuild(json){
     json.cities.forEach( item => {
         const city = document.createElement('div');
+        const lat = item.latitude;
+        const long = item.longitude;
+        const insee = item.insee;
         city.classList.add('city');
         city.textContent = item.name;
+        city.addEventListener('click',() => {
+            fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&latlng=${lat}%2C${long}&insee=${insee}&hourly=true`)
+            .then(res => res.json())
+            .then(json => arrayHourlyBuild( json.forecast[0].datetime.slice(11,13), json.forecast[0].rr10, json.forecast[1].datetime.slice(11,13), json.forecast[1].rr10, json.forecast[2].datetime.slice(11,13), json.forecast[2].rr10, json.forecast[3].datetime.slice(11,13), json.forecast[3].rr10, json.forecast[4].datetime.slice(11,13), json.forecast[4].rr10 ))
+        });
         const line = document.createElement('div');
         line.classList.add('line');
         name.append(city, line);
@@ -103,7 +118,7 @@ input.addEventListener('click', () => {
     input.style.backgroundSize= '60px';
     input.style.backgroundPosition= '400px 11px';
     button.style.display= 'flex';
-    results.style.height= '80%';
+    results.style.height= '69%';
 });
 cancel.addEventListener('click', ()=> {
     input.style.background= 'rgba(255, 255, 255, 0.28)';
@@ -118,7 +133,7 @@ cancel.addEventListener('click', ()=> {
     results.style.height= '0';
     input.value = "";
     let timerHeight = window.setTimeout(displayResearch, 500);
-    name.innerHTML= ""
+    name.innerHTML= "";
 });
 document.addEventListener('keypress', (e) => {
     if(e.key === "Enter" && e.target.value !== ""){

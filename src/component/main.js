@@ -16,6 +16,9 @@ const Main = () => {
                     <div class="search">Rechercher</div>
                 </div>
             </div>
+            <div class="chart-container">
+                <canvas id="chart"></canvas>
+            </div>
         </div>
     </div>
     `
