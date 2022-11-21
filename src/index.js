@@ -101,7 +101,7 @@ function nameBuild(json){
         city.addEventListener('click',() => {
             fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&latlng=${lat}%2C${long}&insee=${insee}&hourly=true`)
             .then(res => res.json())
-            .then(json => arrayHourlyBuild( json.forecast[0].datetime.slice(11,13), json.forecast[0].rr10, json.forecast[1].datetime.slice(11,13), json.forecast[1].rr10, json.forecast[2].datetime.slice(11,13), json.forecast[2].rr10, json.forecast[3].datetime.slice(11,13), json.forecast[3].rr10, json.forecast[4].datetime.slice(11,13), json.forecast[4].rr10 ))
+            .then(json => arrayHourlyBuild( json.forecast[0].datetime.slice(11,16), json.forecast[0].rr10, json.forecast[1].datetime.slice(11,16), json.forecast[1].rr10, json.forecast[2].datetime.slice(11,16), json.forecast[2].rr10, json.forecast[3].datetime.slice(11,16), json.forecast[3].rr10, json.forecast[4].datetime.slice(11,16), json.forecast[4].rr10 ))
         });
         const line = document.createElement('div');
         line.classList.add('line');
