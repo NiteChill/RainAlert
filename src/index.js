@@ -9,6 +9,7 @@ import Loading from "./component/loading"
 import Main from "./component/main"
 import Header from "./component/header"
 import Footer from "./component/footer"
+import chart1 from './component/chart';
 
 //get app
 const app = document.getElementById('app');
@@ -145,3 +146,6 @@ search.addEventListener('click', () => {
         apiSearch();
     }
 })
+
+//export
+export {arrayHourly};

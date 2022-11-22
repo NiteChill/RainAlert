@@ -293,3 +293,12 @@ body{
 .margin-left--20{
     margin-left: 5px;
 }
+
+//chart
+.chart-container{
+    display: flex;
+    margin-top: 8%;
+    width: 87%;
+    height: 45%;
+    background-color: $blanc;
+}
