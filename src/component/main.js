@@ -17,7 +17,7 @@ const Main = () => {
                 </div>
             </div>
             <div class="chart-container">
-                <canvas id="chart"></canvas>
+                <canvas id="chart" class="chart"></canvas>
             </div>
         </div>
     </div>

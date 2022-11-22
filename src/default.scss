@@ -296,9 +296,16 @@ body{
 
 //chart
 .chart-container{
+    position: relative;
     display: flex;
     margin-top: 8%;
     width: 87%;
     height: 45%;
     background-color: $blanc;
+}
+
+.chart{
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
