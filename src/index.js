@@ -1,5 +1,7 @@
 import "./default.scss"
-import { ellipsisHAlt, researchgate } from "fontawesome";
+
+//get app
+const app = document.getElementById('app');
 
 //api import
 const token = "d8fbec2589f959ebd35f1a09990a8aee90f928c4d7d8fa7244e935626bf9b133";
@@ -11,9 +13,9 @@ import Header from "./component/header"
 import Footer from "./component/footer"
 
 //fuction import
-import { arrayHourlyBuild } from "./assets/function/chart"
 import noSearch from "./assets/function/noSearch";
 import apiSearch from "./assets/function/apiSearch";
+import firstGraph from "./assets/function/firstGraph";
 
 //geolocation
 const geolocation = require('geolocation')
@@ -29,16 +31,7 @@ geolocation.getCurrentPosition((err,position) => {
     .then(res => res.json())
     //.then(json => console.log(json))
     .then(json => firstGraph(json))
-    function firstGraph(json){
-        arrayHourlyBuild( json.forecast[0].datetime.slice(11,16), json.forecast[0].rr10, json.forecast[1].datetime.slice(11,16), json.forecast[1].rr10, json.forecast[2].datetime.slice(11,16), json.forecast[2].rr10, json.forecast[3].datetime.slice(11,16), json.forecast[3].rr10, json.forecast[4].datetime.slice(11,16), json.forecast[4].rr10, json.forecast[0].probarain, json.forecast[1].probarain, json.forecast[2].probarain, json.forecast[3].probarain, json.forecast[4].probarain )
-        input.placeholder= json.city.name;
-        const percentageReal = json.forecast[0].probarain += "%";
-        percentage.innerHTML= percentageReal;
-    }
 })
-
-//get app
-const app = document.getElementById('app');
 
 //building html with component
 let content = "";
