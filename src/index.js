@@ -12,8 +12,23 @@ import Footer from "./component/footer"
 
 //fuction import
 import { arrayHourlyBuild } from "./assets/function/chart"
+import noSearch from "./assets/function/noSearch";
+import apiSearch from "./assets/function/apiSearch";
 
-//import chart1 from './component/chart';
+//geolocation
+const geolocation = require('geolocation')
+ 
+geolocation.getCurrentPosition(function (err, position) {
+  if (err) throw err
+  fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&latlng=${position.coords.latitude}%2C${position.coords.longitude}&hourly=true`)
+    .then(res => res.json())
+    //.then(json => console.log(json))
+    .then(json => arrayHourlyBuild( json.forecast[0].datetime.slice(11,16), json.forecast[0].rr10, json.forecast[1].datetime.slice(11,16), json.forecast[1].rr10, json.forecast[2].datetime.slice(11,16), json.forecast[2].rr10, json.forecast[3].datetime.slice(11,16), json.forecast[3].rr10, json.forecast[4].datetime.slice(11,16), json.forecast[4].rr10, json.forecast[0].probarain, json.forecast[1].probarain, json.forecast[2].probarain, json.forecast[3].probarain, json.forecast[4].probarain ))
+    fetch(`https://api.meteo-concept.com/api/location/city?token=${token}&latlng=${position.coords.latitude}%2C${position.coords.longitude}`)
+    .then(res => res.json())
+    //.then(json => console.log(json.city.name))
+    .then(json => input.placeholder= json.city.name);
+})
 
 //get app
 const app = document.getElementById('app');
@@ -77,36 +92,14 @@ const cancel = document.querySelector('.cancel');
 const search = document.querySelector('.search');
 const button = document.querySelector('.button');
 const name = document.querySelector('.name');
-function apiSearch() {
-    name.innerHTML= "";
-    fetch(`https://api.meteo-concept.com/api/location/cities?token=${token}&search=${input.value}`)
-    .then(res => res.json())
-    //.then(json => console.log(json))
-    .then(json => nameBuild(json));
-}
-function nameBuild(json){
-    json.cities.forEach( item => {
-        const city = document.createElement('div');
-        const lat = item.latitude;
-        const long = item.longitude;
-        const insee = item.insee;
-        const cityName = item.name;
-        city.classList.add('city');
-        city.textContent = cityName;
-        city.addEventListener('click',() => {
-            fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&latlng=${lat}%2C${long}&insee=${insee}&hourly=true`)
-            .then(res => res.json())
-            .then(json => arrayHourlyBuild( json.forecast[0].datetime.slice(11,16), json.forecast[0].rr10, json.forecast[1].datetime.slice(11,16), json.forecast[1].rr10, json.forecast[2].datetime.slice(11,16), json.forecast[2].rr10, json.forecast[3].datetime.slice(11,16), json.forecast[3].rr10, json.forecast[4].datetime.slice(11,16), json.forecast[4].rr10 ))
-            noSearch();
-            document.getElementById('chart').style.height= '100%';
-            input.placeholder= cityName;
-        });
-        const line = document.createElement('div');
-        line.classList.add('line');
-        name.append(city, line);
-    });
-}
-function displayResearch() {results.style.display= 'flex'}
+const percentage = document.querySelector('.chance-percentage');
+// function apiSearch() {
+//     name.innerHTML= "";
+//     fetch(`https://api.meteo-concept.com/api/location/cities?token=${token}&search=${input.value}`)
+//     .then(res => res.json())
+//     //.then(json => console.log(json))
+//     .then(json => nameBuild(json));
+// }
 input.addEventListener('click', () => {
     input.style.background= 'white';
     input.style.color='#000';
@@ -121,21 +114,6 @@ input.addEventListener('click', () => {
 cancel.addEventListener('click', ()=> {
     noSearch();
 });
-function noSearch(){
-    input.style.background= 'rgba(255, 255, 255, 0.28)';
-    input.style.color='white';
-    input.style.borderRadius= '8px';
-    input.style.backgroundImage= 'url("./assets/images/glass.png")';
-    input.style.backgroundRepeat= 'no-repeat';
-    input.style.backgroundSize= '60px';
-    input.style.backgroundPosition= '400px 11px';
-    button.style.display= 'none';
-    results.style.display= 'none';
-    results.style.height= '0';
-    input.value = "";
-    let timerHeight = window.setTimeout(displayResearch, 500);
-    name.innerHTML= "";
-}
 document.addEventListener('keypress', (e) => {
     if(e.key === "Enter" && e.target.value !== ""){
         apiSearch();
@@ -148,3 +126,4 @@ search.addEventListener('click', () => {
 })
 
 //export
+export { percentage, input, button, results, name, token };
