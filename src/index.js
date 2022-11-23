@@ -17,17 +17,24 @@ import apiSearch from "./assets/function/apiSearch";
 
 //geolocation
 const geolocation = require('geolocation')
+const parisLgLat = [
+    48.856614,
+    2.3522219
+]
  
-geolocation.getCurrentPosition(function (err, position) {
+geolocation.getCurrentPosition((err,position) => {
   if (err) throw err
-  fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&latlng=${position.coords.latitude}%2C${position.coords.longitude}&hourly=true`)
+  fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&latlng=${parisLgLat[0]}%2C${parisLgLat[1]}&hourly=true`)
+  //fetch(`https://api.meteo-concept.com/api/forecast/nextHours?token=${token}&latlng=${position.coords.latitude}%2C${position.coords.longitude}&hourly=true`)
     .then(res => res.json())
     //.then(json => console.log(json))
-    .then(json => arrayHourlyBuild( json.forecast[0].datetime.slice(11,16), json.forecast[0].rr10, json.forecast[1].datetime.slice(11,16), json.forecast[1].rr10, json.forecast[2].datetime.slice(11,16), json.forecast[2].rr10, json.forecast[3].datetime.slice(11,16), json.forecast[3].rr10, json.forecast[4].datetime.slice(11,16), json.forecast[4].rr10, json.forecast[0].probarain, json.forecast[1].probarain, json.forecast[2].probarain, json.forecast[3].probarain, json.forecast[4].probarain ))
-    fetch(`https://api.meteo-concept.com/api/location/city?token=${token}&latlng=${position.coords.latitude}%2C${position.coords.longitude}`)
-    .then(res => res.json())
-    //.then(json => console.log(json.city.name))
-    .then(json => input.placeholder= json.city.name);
+    .then(json => firstGraph(json))
+    function firstGraph(json){
+        arrayHourlyBuild( json.forecast[0].datetime.slice(11,16), json.forecast[0].rr10, json.forecast[1].datetime.slice(11,16), json.forecast[1].rr10, json.forecast[2].datetime.slice(11,16), json.forecast[2].rr10, json.forecast[3].datetime.slice(11,16), json.forecast[3].rr10, json.forecast[4].datetime.slice(11,16), json.forecast[4].rr10, json.forecast[0].probarain, json.forecast[1].probarain, json.forecast[2].probarain, json.forecast[3].probarain, json.forecast[4].probarain )
+        input.placeholder= json.city.name;
+        const percentageReal = json.forecast[0].probarain += "%";
+        percentage.innerHTML= percentageReal;
+    }
 })
 
 //get app
@@ -93,13 +100,6 @@ const search = document.querySelector('.search');
 const button = document.querySelector('.button');
 const name = document.querySelector('.name');
 const percentage = document.querySelector('.chance-percentage');
-// function apiSearch() {
-//     name.innerHTML= "";
-//     fetch(`https://api.meteo-concept.com/api/location/cities?token=${token}&search=${input.value}`)
-//     .then(res => res.json())
-//     //.then(json => console.log(json))
-//     .then(json => nameBuild(json));
-// }
 input.addEventListener('click', () => {
     input.style.background= 'white';
     input.style.color='#000';

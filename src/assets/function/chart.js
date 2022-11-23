@@ -12,7 +12,7 @@ function arrayHourlyBuild( h1, t1, h2, t2, h3, t3, h4, t4, h5, t5 ){
         { hour: h4, pluie: t4 },
         { hour: h5, pluie: t5 },
     ];
-    console.log(arrayHourly);
+    // console.log(arrayHourly);
     if (build === false){
         graph.destroy();
     }
