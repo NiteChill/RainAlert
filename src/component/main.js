@@ -16,6 +16,10 @@ const Main = () => {
                     <div class="search">Rechercher</div>
                 </div>
             </div>
+            <div class="degree">
+                <i class="degree-icon"></i>
+            </div>
+            <p class="degree-text"><p>
             <div class="graph">
                 <div class="graph-header">
                     <p class="graph-header-text">Précipitations</p>
@@ -26,25 +30,21 @@ const Main = () => {
                 </div>
                 <div class="graph-body">
                     <div class="rain-lvl">
-
                         <div class="rain-lvl-obj">
-                        <img src="./assets/images/big-rain.png"
-                        alt="logo of rain">
-                        <p>Fortes</p>
+                            <img src="./assets/images/big-rain.png"
+                            alt="logo of rain">
+                            <p>Fortes</p>
                         </div>
-
                         <div class="rain-lvl-obj">
-                        <img src="./assets/images/middle-rain.png"
-                        alt="logo of rain">
-                        <p>Moyennes</p>
+                            <img src="./assets/images/middle-rain.png"
+                            alt="logo of rain">
+                            <p>Moyennes</p>
                         </div>
-
                         <div class="rain-lvl-obj">
-                        <img src="./assets/images/small-rain.png"
-                        alt="logo of rain">
-                        <p>Faibles</p>
+                            <img src="./assets/images/small-rain.png"
+                            alt="logo of rain">
+                            <p>Faibles</p>
                         </div>
-
                     </div>
                     <div class="chart-container">
                         <canvas id="chart" class="chart"></canvas>

@@ -16,6 +16,7 @@ import Footer from "./component/footer"
 import noSearch from "./assets/function/noSearch";
 import apiSearch from "./assets/function/apiSearch";
 import firstGraph from "./assets/function/firstGraph";
+import isRainy from "./assets/function/isRainy";
 
 //geolocation
 const geolocation = require('geolocation')
@@ -46,7 +47,7 @@ const loadingScreen = document.querySelector('.loading-screen');
 window.setTimeout(loadingAnimation, 1500);
 function loadingAnimation(){loadingScreen.style.marginLeft = '-550px';};
 
-//switch pages 
+//switch pages
 const map = document.querySelector('.map');
 const weather = document.querySelector('.weather');
 const mapScreen = document.querySelector('.map-screen');
@@ -118,5 +119,8 @@ search.addEventListener('click', () => {
     }
 })
 
+//random consts
+const degreeIcon = document.querySelector('.degree-icon');
+
 //export
-export { percentage, input, button, results, name, token };
+export { percentage, input, button, results, name, token, degreeIcon };
