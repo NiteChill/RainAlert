@@ -52,6 +52,14 @@ const Main = () => {
                     </div>
                 </div>
             </div>
+            <div class="hours">
+                <div class="hours-mask"></div>
+                <p class="hours-txt txt-1">12:00</p>
+                <p class="hours-txt txt-2">12:00</p>
+                <p class="hours-txt txt-3">12:00</p>
+                <p class="hours-txt txt-4">12:00</p>
+                <p class="hours-txt txt-5">12:00</p>
+            </div>
         </div>
     </div>
     `

@@ -48,6 +48,7 @@ window.setTimeout(loadingAnimation, 1500);
 function loadingAnimation(){loadingScreen.style.marginLeft = '-550px';};
 
 //switch pages
+const hoursMask = document.querySelector('.hours-mask');
 const map = document.querySelector('.map');
 const weather = document.querySelector('.weather');
 const mapScreen = document.querySelector('.map-screen');
@@ -60,6 +61,7 @@ function removeWiggleWeather(){weather.classList.remove("wiggle")};
 map.addEventListener('click', () => {
     if (mapOrWeather){
         mapScreen.style.marginLeft = '0';
+        hoursMask.style.left= '106.5%';
         map.classList.remove("wiggle");
         map.style.opacity = '1';
         weather.style.opacity = '.7';
@@ -77,6 +79,7 @@ weather.addEventListener('click', () => {
         timerWeather = window.setTimeout(removeWiggleWeather, 820);
     }
     else{
+        hoursMask.style.left= '6.5%';
         mapScreen.style.marginLeft = '-100%';
         weather.classList.remove("wiggle");
         weather.style.opacity = '1';
