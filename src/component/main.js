@@ -17,9 +17,10 @@ const Main = () => {
                 </div>
             </div>
             <div class="degree">
-                <i class="degree-icon"></i>
+                <i class="degree-icon fa-7x"></i>
+                <p class="degree-text">20°c</p>
             </div>
-            <p class="degree-text"><p>
+            <p class="degree-text-info">text a générer avec arrayHourly</p>
             <div class="graph">
                 <div class="graph-header">
                     <p class="graph-header-text">Précipitations</p>
@@ -47,7 +48,7 @@ const Main = () => {
                         </div>
                     </div>
                     <div class="chart-container">
-                        <canvas id="chart" class="chart"></canvas>
+                        <canvas id="chart"></canvas>
                     </div>
                 </div>
             </div>

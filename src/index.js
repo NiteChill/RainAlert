@@ -121,6 +121,7 @@ search.addEventListener('click', () => {
 
 //random consts
 const degreeIcon = document.querySelector('.degree-icon');
+const degreeText = document.querySelector('.degree-text');
 
 //export
-export { percentage, input, button, results, name, token, degreeIcon };
+export { percentage, input, button, results, name, token, degreeIcon, degreeText };

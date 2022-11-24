@@ -42,6 +42,7 @@ function arrayHourlyBuild( h1, t1, h2, t2, h3, t3, h4, t4, h5, t5 ){
                         }
                     },
                     y: {
+                        max: 1,
                         grid: {
                             display: false,
                         },

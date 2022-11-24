@@ -8,7 +8,7 @@ function firstGraph(json){
     input.placeholder= json.city.name;
     const percentageReal = json.forecast[0].probarain += "%";
     percentage.innerHTML= percentageReal;
-    isRainy();
+    isRainy(json);
 }
 
 export default firstGraph;
