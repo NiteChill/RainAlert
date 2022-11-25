@@ -18,7 +18,7 @@ const Main = () => {
             </div>
             <div class="degree">
                 <i class="degree-icon fa-7x"></i>
-                <p class="degree-text">20°c</p>
+                <p class="degree-text"></p>
             </div>
             <p class="degree-text-info">text a générer avec arrayHourly</p>
             <div class="graph">
@@ -54,11 +54,11 @@ const Main = () => {
             </div>
             <div class="hours">
                 <div class="hours-mask"></div>
-                <p class="hours-txt txt-1">12:00</p>
-                <p class="hours-txt txt-2">12:00</p>
-                <p class="hours-txt txt-3">12:00</p>
-                <p class="hours-txt txt-4">12:00</p>
-                <p class="hours-txt txt-5">12:00</p>
+                <p class="hours-txt txt-1" id="txt1">12:00</p>
+                <p class="hours-txt txt-2" id="txt2">12:00</p>
+                <p class="hours-txt txt-3" id="txt3">12:00</p>
+                <p class="hours-txt txt-4" id="txt4">12:00</p>
+                <p class="hours-txt txt-5" id="txt5">12:00</p>
             </div>
         </div>
     </div>

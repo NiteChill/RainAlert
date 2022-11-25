@@ -16,7 +16,7 @@ import Footer from "./component/footer"
 import noSearch from "./assets/function/noSearch";
 import apiSearch from "./assets/function/apiSearch";
 import firstGraph from "./assets/function/firstGraph";
-import isRainy from "./assets/function/isRainy";
+import { logPlugin } from "@babel/preset-env/lib/debug";
 
 //geolocation
 const geolocation = require('geolocation')
@@ -48,20 +48,16 @@ window.setTimeout(loadingAnimation, 1500);
 function loadingAnimation(){loadingScreen.style.marginLeft = '-550px';};
 
 //switch pages
-const hoursMask = document.querySelector('.hours-mask');
 const map = document.querySelector('.map');
 const weather = document.querySelector('.weather');
 const mapScreen = document.querySelector('.map-screen');
 const indicatorLine = document.querySelector('.indicator-line');
 let mapOrWeather = true;
-let timerMap;
-let timerWeather;
 function removeWiggleMap(){map.classList.remove("wiggle")};
 function removeWiggleWeather(){weather.classList.remove("wiggle")};
 map.addEventListener('click', () => {
     if (mapOrWeather){
         mapScreen.style.marginLeft = '0';
-        hoursMask.style.left= '106.5%';
         map.classList.remove("wiggle");
         map.style.opacity = '1';
         weather.style.opacity = '.7';
@@ -70,16 +66,15 @@ map.addEventListener('click', () => {
     }
     else{
         map.classList.add("wiggle");
-        timerMap = window.setTimeout(removeWiggleMap, 820);
+        window.setTimeout(removeWiggleMap, 820);
     }
 });
 weather.addEventListener('click', () => {
     if (mapOrWeather){
         weather.classList.add("wiggle");
-        timerWeather = window.setTimeout(removeWiggleWeather, 820);
+        window.setTimeout(removeWiggleWeather, 820);
     }
     else{
-        hoursMask.style.left= '6.5%';
         mapScreen.style.marginLeft = '-100%';
         weather.classList.remove("wiggle");
         weather.style.opacity = '1';
@@ -122,9 +117,49 @@ search.addEventListener('click', () => {
     }
 })
 
-//random consts
+//rainy consts
 const degreeIcon = document.querySelector('.degree-icon');
 const degreeText = document.querySelector('.degree-text');
+
+//textClick
+const hoursMask = document.querySelector('.hours-mask');
+const txt1 = document.querySelector('.txt-1');
+const txt2 = document.querySelector('.txt-2');
+const txt3 = document.querySelector('.txt-3');
+const txt4 = document.querySelector('.txt-4');
+const txt5 = document.querySelector('.txt-5');
+const arrayTxt = [ txt1, txt2, txt3, txt4, txt5 ]
+arrayTxt.forEach ( item => {
+    item.addEventListener( 'click', () => {
+        arrayTxt.forEach( item => {
+            item.style.color= '#ffffff';
+        })
+        switch ( item.id ) {
+            case 'txt1' :
+                hoursMask.style.left= '0';
+                txt1.style.color= '#2F4C77';
+                break;
+            case 'txt2' :
+                hoursMask.style.left= '20%';
+                txt2.style.color= '#2F4C77';
+                break;
+            case 'txt3' :
+                hoursMask.style.left= '40%';
+                txt3.style.color= '#2F4C77';
+                break;
+            case 'txt4' :
+                hoursMask.style.left= '60%';
+                txt4.style.color= '#2F4C77';
+                break;
+            case 'txt5' :
+                hoursMask.style.left= '79%';
+                txt5.style.color= '#2F4C77';
+                break;
+            default:
+                console.log("this button is not working properly, you may ask admins");
+        }
+    });
+});
 
 //export
 export { percentage, input, button, results, name, token, degreeIcon, degreeText };

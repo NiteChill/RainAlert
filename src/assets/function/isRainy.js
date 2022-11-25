@@ -8,20 +8,18 @@ function isRainy(json){
     let degreeCelcius = json.forecast[0].temp2m;
     degreeIcon.classList.add('fa-solid');
     if( wind70 >= "75%" | wind100 >= "75%" ){
-        degreeIcon.classList.add('fa-wind')
+        degreeIcon.className='degree-icon fa-7x fa-solid fa-wind';
     }
     else if( rain >= "75%" ){
-        degreeIcon.classList.add('fa-solid');
-        degreeIcon.classList.add('fa-cloud-showers-heavy');
+        degreeIcon.className='degree-icon fa-7x fa-solid fa-cloud-showers-heavy';
     }
     else if( rain >= "30%" ){
-        degreeIcon.classList.add('fa-cloud');
+        degreeIcon.className='degree-icon fa-7x fa-solid fa-cloud';
     }
     else if( rain < "30%" ){
-        degreeIcon.classList.add('fa-sun');
+        degreeIcon.className='degree-icon fa-7x fa-solid fa-sun';
     }
     degreeText.textContent= degreeCelcius += "°C";
-
 }
 
 export default isRainy;

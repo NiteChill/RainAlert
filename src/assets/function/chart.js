@@ -72,4 +72,4 @@ function arrayHourlyBuild( h1, t1, h2, t2, h3, t3, h4, t4, h5, t5 ){
     build = false;
 };
 
-export { arrayHourlyBuild };
+export { arrayHourlyBuild, arrayHourly };
