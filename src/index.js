@@ -4,7 +4,8 @@ import "./default.scss"
 const app = document.getElementById('app');
 
 //api import
-const token = "d8fbec2589f959ebd35f1a09990a8aee90f928c4d7d8fa7244e935626bf9b133";
+//const token = "d8fbec2589f959ebd35f1a09990a8aee90f928c4d7d8fa7244e935626bf9b133";
+const token = "6f0b4550893f9d5bc0ca86b7ce3ed3b583cf8a36e35c8266813c0fd919f99590";
 
 //html import
 import Loading from "./component/loading"
@@ -166,6 +167,15 @@ arrayTxt.forEach ( item => {
         }
     });
 });
+
+//heure
+const actualHour = document.querySelector('.actual-hour');
+let date;
+let actualDate;
+actualDate = window.setInterval( () => {
+    date = new Date();
+    actualHour.textContent = `${date.getHours()}:${date.getMinutes() <= 9 ? "0" + date.getMinutes() : date.getMinutes()}`
+} , 1000);
 
 //export
 export { percentage, input, button, results, name, token, degreeIcon, degreeText, degreeTextInfo, txt1, txt2, txt3, txt4, txt5, hoursMask, parisLgLat };

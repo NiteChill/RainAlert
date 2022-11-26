@@ -3,6 +3,8 @@ const Main = () => {
     `
     <div class="body">
         <div class="map-screen">
+            <iframe  class="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2808902.457307156!2d0.32242311820418196!3d46.5661046531654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd54a02933785731%3A0x6bfd3f96c747d9f7!2sFrance!5e0!3m2!1sfr!2sbe!4v1669481381508!5m2!1sfr!2sbe"style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="actual-hour"></div>
         </div>
         <div class="home-screen">
             <input
