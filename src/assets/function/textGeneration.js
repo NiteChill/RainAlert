@@ -1,4 +1,4 @@
-import { degreeTextInfo, parisLgLat, token } from "../../index";
+import { degreeTextInfo, parisLgLat, token, degreeText } from "../../index";
 import { isFirstOrNot } from "./clickCity";
 import { lat, long, insee } from "./nameBuild";
 
@@ -19,7 +19,7 @@ function textGenerationReal(json, whichText){
     const hour = json.forecast[whichText].datetime.slice(11,16);
     const pluie = json.forecast[whichText].rr10;
     degreeTextInfo.textContent = `${pluie} mm de pluie à ${hour}`;
+    degreeText.textContent= json.forecast[whichText].temp2m + "°C";
 }
 
 export default textGeneration;
-//json.forecast[0].datetime.slice(11,16)
