@@ -16,7 +16,7 @@ import Footer from "./component/footer"
 import noSearch from "./assets/function/noSearch";
 import apiSearch from "./assets/function/apiSearch";
 import firstGraph from "./assets/function/firstGraph";
-import { logPlugin } from "@babel/preset-env/lib/debug";
+import textGeneration from "./assets/function/textGeneration";
 
 //geolocation
 const geolocation = require('geolocation')
@@ -120,6 +120,7 @@ search.addEventListener('click', () => {
 //rainy consts
 const degreeIcon = document.querySelector('.degree-icon');
 const degreeText = document.querySelector('.degree-text');
+const degreeTextInfo = document.querySelector('.degree-text-info');
 
 //textClick
 const hoursMask = document.querySelector('.hours-mask');
@@ -138,22 +139,27 @@ arrayTxt.forEach ( item => {
             case 'txt1' :
                 hoursMask.style.left= '0';
                 txt1.style.color= '#2F4C77';
+                textGeneration(0);
                 break;
             case 'txt2' :
                 hoursMask.style.left= '20%';
                 txt2.style.color= '#2F4C77';
+                textGeneration(1);
                 break;
             case 'txt3' :
                 hoursMask.style.left= '40%';
                 txt3.style.color= '#2F4C77';
+                textGeneration(2);
                 break;
             case 'txt4' :
                 hoursMask.style.left= '60%';
                 txt4.style.color= '#2F4C77';
+                textGeneration(3);
                 break;
             case 'txt5' :
                 hoursMask.style.left= '79%';
                 txt5.style.color= '#2F4C77';
+                textGeneration(4);
                 break;
             default:
                 console.log("this button is not working properly, you may ask admins");
@@ -162,4 +168,4 @@ arrayTxt.forEach ( item => {
 });
 
 //export
-export { percentage, input, button, results, name, token, degreeIcon, degreeText };
+export { percentage, input, button, results, name, token, degreeIcon, degreeText, degreeTextInfo, txt1, txt2, txt3, txt4, txt5, hoursMask, parisLgLat };

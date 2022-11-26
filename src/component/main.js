@@ -18,7 +18,7 @@ const Main = () => {
             </div>
             <div class="degree">
                 <i class="degree-icon fa-7x"></i>
-                <p class="degree-text"></p>
+                <p class="degree-text">error : no acces to the api</p>
             </div>
             <p class="degree-text-info">text a générer avec arrayHourly</p>
             <div class="graph">

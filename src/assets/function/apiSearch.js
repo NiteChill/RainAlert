@@ -1,7 +1,6 @@
-import { name } from "../../index";
+import { name, input, token } from "../../index";
 import nameBuild from "./nameBuild";
-import { input } from "../../index";
-import { token } from "../../index";
+
 function apiSearch() {
     name.innerHTML= "";
     fetch(`https://api.meteo-concept.com/api/location/cities?token=${token}&search=${input.value}`)

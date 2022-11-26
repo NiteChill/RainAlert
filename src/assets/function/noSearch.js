@@ -1,7 +1,5 @@
-import { input } from "../../index";
-import { button } from "../../index";
-import { results } from "../../index";
-import { name } from "../../index";
+import { input, button, results, name } from "../../index";
+
 function displayResearch() {results.style.display= 'flex'}
 function noSearch(){
     input.style.background= 'rgba(255, 255, 255, 0.28)';

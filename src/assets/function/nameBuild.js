@@ -1,6 +1,5 @@
 import { input } from "../../index";
-import { name } from "../../index";
-import { token } from "../../index";
+import { name, token } from "../../index";
 import clickCity from "./clickCity";
 import noSearch from "./noSearch";
 
@@ -20,6 +19,7 @@ function nameBuild(json){
             .then(json => clickCity(json))
             //.then(json => arrayHourlyBuild( json.forecast[0].datetime.slice(11,16), json.forecast[0].rr10, json.forecast[1].datetime.slice(11,16), json.forecast[1].rr10, json.forecast[2].datetime.slice(11,16), json.forecast[2].rr10, json.forecast[3].datetime.slice(11,16), json.forecast[3].rr10, json.forecast[4].datetime.slice(11,16), json.forecast[4].rr10))
             noSearch();
+            getLatLong(item);
             input.placeholder= cityName;
         });
         const line = document.createElement('div');
@@ -28,4 +28,15 @@ function nameBuild(json){
     });
 }
 
+let lat;
+let long;
+let insee;
+
+function getLatLong(item){
+    lat = item.latitude;
+    long = item.longitude;
+    insee = item.insee;
+}
+
 export default nameBuild;
+export { lat, long, insee }

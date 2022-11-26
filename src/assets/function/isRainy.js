@@ -1,5 +1,4 @@
-import { degreeIcon } from "../../index";
-import { degreeText } from "../../index";
+import { degreeIcon, degreeText } from "../../index";
 
 function isRainy(json){
     let wind70 = json.forecast[0].probawind70;
