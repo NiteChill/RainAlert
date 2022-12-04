@@ -79,6 +79,7 @@ body{
 
 //home
 .home-screen{
+    position: relative;
     margin-top: 40px;
     display: flex;
     width: 100%;
@@ -122,9 +123,10 @@ body{
         }
     }
     & .results{
+        top:8%;
         position: absolute;
         display: flex;
-        z-index: 2;
+        z-index: 4;
         width: 87%;
         height: 0;
         font-family: 'Roboto', sans-serif;

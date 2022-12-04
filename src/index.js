@@ -102,7 +102,7 @@ input.addEventListener('click', () => {
     input.style.backgroundSize= '60px';
     input.style.backgroundPosition= '400px 11px';
     button.style.display= 'flex';
-    results.style.height= '69%';
+    results.style.height= '76%';
 });
 cancel.addEventListener('click', ()=> {
     noSearch();
